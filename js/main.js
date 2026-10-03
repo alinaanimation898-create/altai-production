@@ -375,9 +375,6 @@ function createCaseCardHtml(item, isClone = false) {
       <div class="case-thumbnail-wrapper">
         <div class="case-media-container">
           ${mediaContent}
-          <span class="case-tag-badge">
-            ${item.category}
-          </span>
           <div class="play-button-overlay">
             <svg viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z"/>
@@ -387,14 +384,8 @@ function createCaseCardHtml(item, isClone = false) {
       </div>
       <div class="case-content">
         <div class="case-header-row">
-          <h3 class="case-title">${item.title}</h3>
-          <span class="case-watch-link">
-            Смотреть
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </span>
+          <span class="case-status-badge">${item.category}</span>
+          <h3 class="case-title-side">${item.title}</h3>
         </div>
         <p class="case-desc">${item.description}</p>
       </div>

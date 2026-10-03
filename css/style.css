@@ -190,7 +190,8 @@ body {
    Typography Rules (Main Headings: BENZINA Uppercase. All else: Inter)
    ========================================================================== */
 h1.hero-title,
-h2.section-title {
+h2.section-title,
+.footer-brand-title {
   font-family: var(--font-heading);
   text-transform: uppercase;
   font-weight: 800;
@@ -809,43 +810,39 @@ h3, h4, p, span, a, button, input, div {
 
 .case-header-row {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 8px;
+  gap: 14px;
+  margin-bottom: 10px;
 }
 
-.case-title {
+.case-status-badge {
   font-family: var(--font-body);
-  font-size: 1.28rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-blue-deep);
+  background: rgba(14, 165, 233, 0.09);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  padding: 4px 10px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.case-title-side {
+  font-family: var(--font-body);
+  font-size: 1.22rem;
   font-weight: 700;
   line-height: 1.3;
   color: #0f172a;
+  text-align: right;
+  margin: 0;
   transition: color 0.3s ease;
 }
 
-.case-card:hover .case-title {
+.case-card:hover .case-title-side {
   color: var(--accent-blue-deep);
-}
-
-.case-watch-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.84rem;
-  font-weight: 600;
-  color: var(--accent-blue-deep);
-  white-space: nowrap;
-}
-
-.case-watch-link svg {
-  width: 13px;
-  height: 13px;
-  transition: transform 0.3s ease;
-}
-
-.case-card:hover .case-watch-link svg {
-  transform: translateX(4px);
 }
 
 .case-desc {
@@ -1109,15 +1106,18 @@ h3, h4, p, span, a, button, input, div {
   filter: drop-shadow(0 6px 24px rgba(14, 165, 233, 0.3));
 }
 
-.footer-slogan {
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+.footer-brand-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #0ea5e9, #c084fc);
+  background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 40%, #c084fc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-top: 4px;
+  margin: 6px 0 12px;
+  line-height: 1.1;
+  text-align: center;
 }
 
 .footer-legal {
