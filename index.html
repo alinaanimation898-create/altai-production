@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-ПРОДАКШН ДЛЯ БРЕНДОВ — Altai Production</title>
+  <meta name="description" content="Создаем ТВ-рекламу, имиджевое видео и нейросетевые спецпроекты кинематографического качества без затрат на масштабные съемки.">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="AI-ПРОДАКШН ДЛЯ БРЕНДОВ — Altai Production">
+  <meta property="og:description" content="Создаем ТВ-рекламу, имиджевое видео и нейросетевые спецпроекты кинематографического качества - без затрат на масштабные съемки.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/favicon-192.png">
+
+  <!-- Google Fonts: Inter for all texts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css?v=20261003_v4">
+</head>
+<body>
+
+  <!-- Altai Sunset Ambient Aura & Mountain Wind Canvas -->
+  <div class="bg-ambient-grid">
+    <div class="sunset-glow-orb glow-1"></div>
+    <div class="sunset-glow-orb glow-2"></div>
+    <div class="sunset-glow-orb glow-3"></div>
+    <canvas id="wind-canvas" class="wind-canvas"></canvas>
+  </div>
+
+  <!-- Cursor Sunset Spotlight -->
+  <div class="cursor-spotlight" id="cursor-spotlight"></div>
+
+  <!-- Header / Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-container">
+      <a href="#" class="nav-brand" aria-label="Altai Production Главная">
+        <img src="assets/logo-clean.png" alt="Altai Production" class="brand-logo-img" />
+      </a>
+
+      <!-- Menu links removed as requested by user -->
+
+      <a href="#contact" class="nav-cta">
+        <span class="cta-shimmer"></span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+        </svg>
+        <span class="cta-text">Связаться</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section (Light Blue Cyber-Mountain Atmosphere) -->
+    <section class="hero" id="hero">
+      <!-- Light Blue Cyber-Mountain Peaks Backdrop (from Screenshot 2) -->
+      <div class="hero-mountains-backdrop" aria-hidden="true">
+        <img src="assets/mountains-light.svg" alt="" class="hero-mountains-img" />
+      </div>
+
+      <div class="container hero-content-center">
+        <!-- Prominent 3D Glowing Brand Logo from Screenshot 2 -->
+        <div class="hero-brand-symbol reveal-on-scroll">
+          <img src="assets/logo-clean.png" alt="Altai Production" class="hero-3d-logo" />
+          <div class="hero-logo-aura"></div>
+        </div>
+
+        <h1 class="hero-title reveal-on-scroll">
+          <span class="pearl-gradient">AI-ПРОДАКШН ДЛЯ БРЕНДОВ</span>
+        </h1>
+
+        <p class="hero-subtitle reveal-on-scroll">
+          Создаем ТВ-рекламу, имиджевое видео и нейросетевые спецпроекты кинематографического качества - без затрат на масштабные съемки
+        </p>
+
+        <div class="hero-actions reveal-on-scroll">
+          <a href="#cases" class="btn-primary">
+            <span>Смотреть кейсы</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+          </a>
+          <a href="#contact" class="btn-secondary">
+            <span class="cta-shimmer"></span>
+            <span>Обсудить проект</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cases Section (Floating Video Exhibition with Neon Borders) -->
+    <section class="cases-section" id="cases">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <div class="section-meta-tag">Portfolio Exhibition</div>
+          <h2 class="section-title">ИЗБРАННЫЕ <span class="pearl-gradient">КЕЙСЫ</span></h2>
+          <p class="section-desc">
+            Реализованные кампании для ведущих брендов, технологических гигантов и глобальных форумов
+          </p>
+
+          <!-- Interactive View Controls -->
+          <div class="cases-view-controls">
+            <button class="view-toggle-btn active" id="view-mode-flow" type="button">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 12h20M17 5l5 7-5 7"/>
+              </svg>
+              <span>Парящий поток</span>
+            </button>
+            <button class="view-toggle-btn" id="view-mode-grid" type="button">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+              <span>Сетка</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Cases Container (Supports both Infinite Flow Marquee & Floating Grid) -->
+        <div class="cases-display-wrapper mode-flow" id="cases-display-wrapper">
+          <div class="cases-marquee-track" id="cases-marquee-track">
+            <!-- Dynamic case cards injected by main.js with continuous neon border beam & floating drift -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why AI Section (Creative Out-of-the-Box Mountain Horizon Architecture) -->
+    <section class="why-section" id="why-ai">
+      <div class="container">
+        <!-- Abstract Altai Mountain Ridge Line (Subtle SVG Art) -->
+        <div class="mountain-ridge-art">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,90 Q180,20 360,60 T720,30 T1000,70 T1200,40" fill="none" stroke="url(#sunsetRidgeGrad)" stroke-width="1.5" stroke-dasharray="4 8"/>
+            <defs>
+              <linearGradient id="sunsetRidgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.4"/>
+                <stop offset="50%" stop-color="#f472b6" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#818cf8" stop-opacity="0.3"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <div class="section-header reveal-on-scroll">
+          <div class="section-meta-tag">Altai Production Manifesto</div>
+          <h2 class="section-title">ПОЧЕМУ <span class="pearl-gradient">AI-ПРОДАКШН</span></h2>
+          <p class="section-desc">
+            Новый стандарт видеопроизводства: все возможности большого кино без ограничений классической съемки
+          </p>
+        </div>
+
+        <div class="why-ethereal-grid">
+          <!-- 01 -->
+          <article class="why-ethereal-card reveal-on-scroll" style="--card-order: 1;">
+            <div class="card-ambient-light"></div>
+            <div class="card-head-line">
+              <span class="card-coord">ALT-01 // VELOCITY</span>
+              <span class="card-index">01</span>
+            </div>
+            <div class="card-icon-glyph">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="card-title">Скорость, которой раньше не было</h3>
+            <p class="card-text">
+              От утверждённого тритмента до готового мастер-ролика - от 5 до 14 рабочих дней. Правки вносятся быстро, а десятки вариантов под A/B тесты создаются за считанные часы, а не недели
+            </p>
+            <div class="card-bottom-aura"></div>
+          </article>
+
+          <!-- 02 -->
+          <article class="why-ethereal-card reveal-on-scroll" style="--card-order: 2;">
+            <div class="card-ambient-light"></div>
+            <div class="card-head-line">
+              <span class="card-coord">ALT-02 // CAPITAL</span>
+              <span class="card-index">02</span>
+            </div>
+            <div class="card-icon-glyph">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                <line x1="12" y1="6" x2="12" y2="8"></line>
+                <line x1="12" y1="16" x2="12" y2="18"></line>
+              </svg>
+            </div>
+            <h3 class="card-title">Бюджет работает на результат</h3>
+            <p class="card-text">
+              Нет расходов на аренду павильонов, кастинг, логистику съёмочной группы и кейтеринг. Каждый рубль уходит в качество картинки, а не в организацию процесса
+            </p>
+            <div class="card-bottom-aura"></div>
+          </article>
+
+          <!-- 03 -->
+          <article class="why-ethereal-card reveal-on-scroll" style="--card-order: 3;">
+            <div class="card-ambient-light"></div>
+            <div class="card-head-line">
+              <span class="card-coord">ALT-03 // CINEMA</span>
+              <span class="card-index">03</span>
+            </div>
+            <div class="card-icon-glyph">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
+                <polyline points="17 2 12 7 7 2"></polyline>
+              </svg>
+            </div>
+            <h3 class="card-title">Качество уровня ТВ и кино</h3>
+            <p class="card-text">
+              Реалистичный свет и физика, проработанные текстуры, профессиональный постпродакшн, саунд-дизайн и цветокоррекция. Результат соответствует строгим стандартам телевещания
+            </p>
+            <div class="card-bottom-aura"></div>
+          </article>
+
+          <!-- 04 -->
+          <article class="why-ethereal-card reveal-on-scroll" style="--card-order: 4;">
+            <div class="card-ambient-light"></div>
+            <div class="card-head-line">
+              <span class="card-coord">ALT-04 // VISION</span>
+              <span class="card-index">04</span>
+            </div>
+            <div class="card-icon-glyph">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">Безграничная креатив-свобода</h3>
+            <p class="card-text">
+              Любые локации, эпохи и миры, невозможные или слишком дорогие для реальной съёмки: космос, подводные сцены, фантастические пространства, исторические реконструкции. Если идея придумана, её можно показать
+            </p>
+            <div class="card-bottom-aura"></div>
+          </article>
+
+          <!-- 05 -->
+          <article class="why-ethereal-card reveal-on-scroll" style="--card-order: 5;">
+            <div class="card-ambient-light"></div>
+            <div class="card-head-line">
+              <span class="card-coord">ALT-05 // MATRIX</span>
+              <span class="card-index">05</span>
+            </div>
+            <div class="card-icon-glyph">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <polyline points="9 21 3 21 3 15"></polyline>
+                <line x1="21" y1="3" x2="14" y2="10"></line>
+                <line x1="3" y1="21" x2="10" y2="14"></line>
+              </svg>
+            </div>
+            <h3 class="card-title">Масштабирование без потерь</h3>
+            <p class="card-text">
+              Один ролик легко превращается в линейку: версии для разных рынков, аудиторий, форматов и платформ (вертикаль, горизонталь, квадрат), с сохранением единого стиля и качества
+            </p>
+            <div class="card-bottom-aura"></div>
+          </article>
+
+          <!-- 06 -->
+          <article class="why-ethereal-card reveal-on-scroll" style="--card-order: 6;">
+            <div class="card-ambient-light"></div>
+            <div class="card-head-line">
+              <span class="card-coord">ALT-06 // HARMONY</span>
+              <span class="card-index">06</span>
+            </div>
+            <div class="card-icon-glyph">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Независимость от внешних факторов</h3>
+            <p class="card-text">
+              Погода, график актёров, разрешения на съёмку, сезонность и форс-мажоры больше не срывают сроки и не удорожают проект
+            </p>
+            <div class="card-bottom-aura"></div>
+          </article>
+
+          <!-- 07 -->
+          <article class="why-ethereal-card reveal-on-scroll" style="--card-order: 7;">
+            <div class="card-ambient-light"></div>
+            <div class="card-head-line">
+              <span class="card-coord">ALT-07 // CONTROL</span>
+              <span class="card-index">07</span>
+            </div>
+            <div class="card-icon-glyph">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">Точный контроль результата</h3>
+            <p class="card-text">
+              Каждый кадр можно доработать до утверждения: изменить свет, цвет, ракурс или деталь без пересъёмки. Вы видите результат на каждом этапе и влияете на него
+            </p>
+            <div class="card-bottom-aura"></div>
+          </article>
+
+          <!-- 08 -->
+          <article class="why-ethereal-card reveal-on-scroll" style="--card-order: 8;">
+            <div class="card-ambient-light"></div>
+            <div class="card-head-line">
+              <span class="card-coord">ALT-08 // HYPOTHESIS</span>
+              <span class="card-index">08</span>
+            </div>
+            <div class="card-icon-glyph">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 14 14"></polyline>
+              </svg>
+            </div>
+            <h3 class="card-title">Быстрая проверка гипотез</h3>
+            <p class="card-text">
+              Тестируйте разные сюжеты, образы и подачи ещё до запуска полноценной кампании. Это снижает риск и помогает выбрать то, что работает лучше всего
+            </p>
+            <div class="card-bottom-aura"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section (Open Atmosphere, Pure Breathing Room) -->
+    <section class="cta-section" id="contact">
+      <div class="container">
+        <div class="cta-open-wrapper reveal-on-scroll">
+          <div class="section-meta-tag">ГОРЫ ВАШИХ ФАНТАЗИЙ НАМ ПО КОЛЕНО // НА СВЯЗИ 24/7</div>
+          <h2 class="section-title cta-title">ОБСУДИМ <span class="pearl-gradient">ВАШ ПРОЕКТ</span>?</h2>
+          <p class="cta-subtitle">
+            Расскажите о вашей задаче или пришлите бриф. Мы подготовим концепт, таймлайн и предварительный расчет в течение 24 часов
+          </p>
+
+          <div class="cta-buttons">
+            <!-- Telegram -->
+            <a href="https://t.me/alina_zhali" target="_blank" rel="noopener noreferrer" class="contact-btn contact-btn-tg">
+              <span class="cta-shimmer"></span>
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+              </svg>
+              <span>Telegram</span>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:az@altaiweb.online" class="contact-btn contact-btn-mail">
+              <span class="cta-shimmer"></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>az@altaiweb.online</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (Centered Logo, No Podlozhka, Slogan & Legal Info from Screenshot 3) -->
+  <footer class="footer">
+    <div class="container footer-centered">
+      <a href="#" class="footer-logo-link" aria-label="Altai Production Главная">
+        <img src="assets/logo-clean.png" alt="Altai Production" class="footer-logo-img" />
+      </a>
+      <p class="footer-slogan">ГОРЫ ВАШИХ ФАНТАЗИЙ НАМ ПО КОЛЕНО</p>
+      <div class="footer-legal">
+        <span>© 2026 Altai Production</span>
+        <span class="footer-dot">•</span>
+        <span>ИП Жалилова Алина Наильевна</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 16:9 Responsive Video Modal -->
+  <div class="modal-backdrop" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="modal-case-title">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div class="modal-info">
+          <h3 class="modal-title" id="modal-case-title">Название кейса</h3>
+          <span class="modal-tag" id="modal-case-tag">Формат</span>
+        </div>
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Закрыть плеер">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-video-wrapper" id="modal-player-container">
+        <!-- iframe is injected here dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/cases.js?v=20261003_v4"></script>
+  <script src="js/main.js?v=20261003_v4"></script>
+</body>
+</html>

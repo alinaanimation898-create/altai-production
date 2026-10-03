@@ -1,0 +1,11 @@
+{
+  "name": "altai-production-portfolio",
+  "version": "1.0.0",
+  "description": "Премиальный сайт-портфолио для Altai Production (AI-видеопродакшн для крупных брендов)",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": ["ai-production", "portfolio", "video-production", "altai-production"],
+  "author": "Altai Production",
+  "license": "MIT"
+}
