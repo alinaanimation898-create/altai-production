@@ -472,14 +472,6 @@ h3, h4, p, a, button, input {
   transition: filter 0.3s ease;
 }
 
-.hero-btn-arrow {
-  width: 22px;
-  height: 22px;
-  stroke: #0284c7;
-  filter: drop-shadow(0 2px 8px rgba(14, 165, 233, 0.45));
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.3s ease, filter 0.3s ease;
-}
-
 @keyframes heroGradientFlow {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -492,12 +484,6 @@ h3, h4, p, a, button, input {
 
 .hero-btn-gradient:hover .hero-btn-text {
   filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.7)) drop-shadow(0 0 24px rgba(236, 72, 153, 0.5));
-}
-
-.hero-btn-gradient:hover .hero-btn-arrow {
-  transform: translateY(4px);
-  stroke: #ec4899;
-  filter: drop-shadow(0 4px 14px rgba(236, 72, 153, 0.65));
 }
 
 /* ==========================================================================
@@ -875,14 +861,14 @@ h3, h4, p, a, button, input {
 
 .why-ethereal-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1.5px solid rgba(14, 165, 233, 0.28);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1.5px solid rgba(226, 232, 240, 0.95);
   border-radius: var(--radius-lg);
   padding: 34px 28px 30px;
   overflow: hidden;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 14px 34px -10px rgba(14, 165, 233, 0.12), 0 0 0 1px rgba(186, 230, 253, 0.35);
+  box-shadow: 0 10px 28px -8px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(244, 114, 182, 0.14);
   transition: var(--transition-smooth);
   display: flex;
   flex-direction: column;
@@ -925,28 +911,84 @@ h3, h4, p, a, button, input {
   z-index: 1;
 }
 
+/* Ambient Lights: Highlighted in different places across cards, NO blue */
 .card-ambient-light {
   position: absolute;
-  top: -50px;
-  right: -50px;
-  width: 150px;
-  height: 150px;
+  width: 170px;
+  height: 170px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, rgba(244, 114, 182, 0.08) 50%, transparent 70%);
   pointer-events: none;
   transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0.65;
+  filter: blur(20px);
 }
 
 .why-ethereal-card:hover .card-ambient-light {
-  transform: scale(1.6);
+  transform: scale(1.45);
   opacity: 1;
+}
+
+/* Card 1: Top-Right (Sunset Rose & Lilac) */
+.why-ethereal-grid > article:nth-child(1) .card-ambient-light {
+  top: -40px;
+  right: -40px;
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.35) 0%, rgba(192, 132, 252, 0.18) 60%, transparent 100%);
+}
+
+/* Card 2: Bottom-Left (Soft Peach & Golden Glow) */
+.why-ethereal-grid > article:nth-child(2) .card-ambient-light {
+  bottom: -40px;
+  left: -40px;
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.28) 0%, rgba(253, 224, 71, 0.16) 60%, transparent 100%);
+}
+
+/* Card 3: Top-Left (Twilight Orchid & Magenta) */
+.why-ethereal-grid > article:nth-child(3) .card-ambient-light {
+  top: -40px;
+  left: -40px;
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.35) 0%, rgba(236, 72, 153, 0.18) 60%, transparent 100%);
+}
+
+/* Card 4: Bottom-Right (Sunset Coral & Rose) */
+.why-ethereal-grid > article:nth-child(4) .card-ambient-light {
+  bottom: -40px;
+  right: -40px;
+  background: radial-gradient(circle, rgba(244, 63, 94, 0.28) 0%, rgba(251, 113, 133, 0.16) 60%, transparent 100%);
+}
+
+/* Card 5: Center-Right (Warm Peach & Rose) */
+.why-ethereal-grid > article:nth-child(5) .card-ambient-light {
+  top: 30%;
+  right: -50px;
+  background: radial-gradient(circle, rgba(253, 164, 175, 0.32) 0%, rgba(244, 114, 182, 0.18) 60%, transparent 100%);
+}
+
+/* Card 6: Top-Center (Luminous Lilac Aurora) */
+.why-ethereal-grid > article:nth-child(6) .card-ambient-light {
+  top: -50px;
+  left: 30%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, rgba(216, 180, 254, 0.18) 60%, transparent 100%);
+}
+
+/* Card 7: Bottom-Center (Sunset Amber & Rose) */
+.why-ethereal-grid > article:nth-child(7) .card-ambient-light {
+  bottom: -50px;
+  left: 35%;
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.28) 0%, rgba(244, 114, 182, 0.18) 60%, transparent 100%);
+}
+
+/* Card 8: Center-Left (Twilight Amethyst & Peach) */
+.why-ethereal-grid > article:nth-child(8) .card-ambient-light {
+  top: 35%;
+  left: -50px;
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.32) 0%, rgba(253, 164, 175, 0.18) 60%, transparent 100%);
 }
 
 .why-ethereal-card:hover {
   transform: translateY(-6px);
-  background: rgba(255, 255, 255, 0.96);
-  border-color: rgba(56, 189, 248, 0.6);
-  box-shadow: 0 20px 45px -10px rgba(14, 165, 233, 0.2), 0 0 24px rgba(192, 132, 252, 0.15);
+  background: #ffffff;
+  border-color: rgba(244, 114, 182, 0.45);
+  box-shadow: 0 20px 42px -10px rgba(244, 114, 182, 0.18), 0 0 22px rgba(192, 132, 252, 0.16);
 }
 
 .card-title {
@@ -961,7 +1003,7 @@ h3, h4, p, a, button, input {
 }
 
 .why-ethereal-card:hover .card-title {
-  color: #0284c7;
+  color: #9333ea;
   transform: translateX(2px);
 }
 
@@ -976,7 +1018,7 @@ h3, h4, p, a, button, input {
    CTA Section (Open Atmosphere, Iridescent Mountain Finale)
    ========================================================================== */
 .cta-section {
-  padding: var(--section-spacing-y) 0;
+  padding: var(--section-spacing-y) 0 10px;
   position: relative;
   text-align: center;
   overflow: hidden;
@@ -998,7 +1040,7 @@ h3, h4, p, a, button, input {
   height: auto;
   object-fit: contain;
   opacity: 0.95;
-  filter: drop-shadow(0 4px 20px rgba(14, 165, 233, 0.35)) drop-shadow(0 0 35px rgba(192, 132, 252, 0.3));
+  filter: none !important;
   animation: mountainBreathe 14s ease-in-out infinite alternate;
 }
 
@@ -1087,7 +1129,7 @@ h3, h4, p, a, button, input {
    Footer: Centered Logo + Corner Legal Texts (Faint Grey in 2 Corners)
    ========================================================================== */
 .footer {
-  padding: 70px 0 35px;
+  padding: 30px 0 35px;
   border-top: none;
   background: transparent;
   backdrop-filter: none;
