@@ -544,7 +544,7 @@ h3, h4, p, a, button, input {
    Cases Section: Dynamic Floating Stream with Continuous Neon Borders
    ========================================================================== */
 .cases-section {
-  padding: var(--section-spacing-y) 0;
+  padding: clamp(60px, 6.5vw, 85px) 0 20px;
   position: relative;
   overflow: hidden;
 }
@@ -617,7 +617,7 @@ h3, h4, p, a, button, input {
 /* MODE: Flow (Dynamic Seamless Infinite Stream) */
 .cases-display-wrapper.mode-flow {
   overflow: hidden;
-  padding: 20px 0 35px;
+  padding: 10px 0 10px;
 }
 
 .cases-display-wrapper.mode-flow .cases-marquee-track {
@@ -839,23 +839,25 @@ h3, h4, p, a, button, input {
 
 .case-header-row {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   gap: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
+/* Pure text label, no rectangular background plate or border */
 .case-status-badge {
   font-family: var(--font-body);
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--accent-blue-deep);
-  background: rgba(14, 165, 233, 0.09);
-  border: 1px solid rgba(14, 165, 233, 0.3);
-  padding: 4px 10px;
-  border-radius: 4px;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
   flex-shrink: 0;
 }
 
@@ -867,6 +869,8 @@ h3, h4, p, a, button, input {
   color: #0f172a;
   text-align: right;
   margin: 0;
+  background: transparent !important;
+  border: none !important;
   transition: color 0.3s ease;
 }
 
@@ -884,7 +888,7 @@ h3, h4, p, a, button, input {
    Why AI Section: Mountain Horizon Ethereal Architecture
    ========================================================================== */
 .why-section {
-  padding: var(--section-spacing-y) 0;
+  padding: 40px 0 clamp(80px, 8vw, 120px);
   position: relative;
   overflow: hidden;
 }
@@ -900,13 +904,6 @@ h3, h4, p, a, button, input {
   pointer-events: none;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
   -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
-}
-
-.mountain-ridge-art {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto 30px;
-  opacity: 0.7;
 }
 
 .why-ethereal-grid {
@@ -1375,10 +1372,16 @@ h3, h4, p, a, button, input {
     gap: 20px;
   }
 
-  .cases-section,
-  .why-section,
+  .cases-section {
+    padding: 50px 0 15px;
+  }
+
+  .why-section {
+    padding: 30px 0 60px;
+  }
+
   .cta-section {
-    padding: clamp(64px, 9vw, 84px) 0;
+    padding: clamp(60px, 8vw, 80px) 0;
   }
 
   .cta-mountains-backdrop {
