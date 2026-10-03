@@ -202,16 +202,40 @@ h2.section-title *,
   font-family: 'BENZINA', 'Benzin', 'BENZIN', -apple-system, BlinkMacSystemFont, sans-serif !important;
   text-transform: uppercase;
   font-weight: 800;
-  letter-spacing: -0.02em;
   color: var(--text-main);
-  line-height: 1.08;
 }
 
 h2.section-title,
-.section-title,
+.section-title {
+  font-size: clamp(1.4rem, 2.7vw, 2.45rem);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+}
+
 .cta-title {
-  font-size: clamp(2.8rem, 6.8vw, 5.4rem);
+  font-size: clamp(2.4rem, 5.8vw, 4.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   margin-bottom: 22px;
+}
+
+.hero-brand-line,
+.hero-sub-line {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.cta-lead-word {
+  display: inline-block;
+}
+
+.cta-ideas-phrase {
+  display: inline-block;
+  white-space: nowrap !important;
 }
 
 h3, h4, p, a, button, input {
@@ -563,7 +587,10 @@ h3, h4, p, a, button, input {
 /* MODE: Flow (Dynamic Seamless Infinite Stream) */
 .cases-display-wrapper.mode-flow {
   overflow: hidden;
-  padding: 10px 0 10px;
+  padding: 16px 0 24px;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent 0%, black 2.5%, black 97.5%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 2.5%, black 97.5%, transparent 100%);
 }
 
 .cases-display-wrapper.mode-flow .cases-marquee-track {
@@ -571,7 +598,7 @@ h3, h4, p, a, button, input {
   gap: 32px;
   width: max-content;
   animation: marqueeGlide 22s linear infinite;
-  padding-left: 20px;
+  padding-left: 0;
 }
 
 .cases-display-wrapper.mode-flow:hover .cases-marquee-track {
@@ -1358,6 +1385,29 @@ h3, h4, p, a, button, input {
     min-height: auto;
   }
 
+  .hero-title {
+    font-size: clamp(1.65rem, 6.8vw, 2.7rem) !important;
+    line-height: 1.14;
+  }
+
+  .hero-brand-line {
+    display: block;
+    white-space: nowrap !important;
+    margin-bottom: 4px;
+  }
+
+  .hero-sub-line {
+    display: block;
+    white-space: nowrap !important;
+  }
+
+  h2.section-title,
+  .section-title {
+    font-size: clamp(1.15rem, 4.8vw, 1.55rem);
+    line-height: 1.32;
+    padding: 0 8px;
+  }
+
   .cases-display-wrapper.mode-flow .case-card {
     width: 310px;
   }
@@ -1373,9 +1423,27 @@ h3, h4, p, a, button, input {
   }
 
   .cases-section,
-  .why-section,
+  .why-section {
+    padding: clamp(50px, 7vw, 70px) 0;
+  }
+
   .cta-section {
-    padding: clamp(60px, 8vw, 80px) 0;
+    padding: clamp(50px, 7vw, 70px) 0 10px;
+  }
+
+  .cta-title {
+    font-size: clamp(1.65rem, 7.2vw, 2.6rem) !important;
+    line-height: 1.14;
+  }
+
+  .cta-lead-word {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cta-ideas-phrase {
+    display: block;
+    white-space: nowrap !important;
   }
 
   .cta-mountains-footing {
