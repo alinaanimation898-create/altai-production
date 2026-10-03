@@ -9,25 +9,25 @@
   src: url('../assets/fonts/Benzin-Bold.woff2') format('woff2'),
        url('../assets/fonts/Benzin-Bold.woff') format('woff'),
        url('../assets/fonts/Benzin-Bold.ttf') format('truetype');
-  font-weight: 400 900;
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'BENZINA';
+  font-family: 'Benzin';
   src: url('../assets/fonts/Benzin-Bold.woff2') format('woff2'),
        url('../assets/fonts/Benzin-Bold.woff') format('woff'),
        url('../assets/fonts/Benzin-Bold.ttf') format('truetype');
-  font-weight: normal;
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'BENZINA';
+  font-family: 'BENZIN';
   src: url('../assets/fonts/Benzin-Bold.woff2') format('woff2'),
        url('../assets/fonts/Benzin-Bold.woff') format('woff'),
        url('../assets/fonts/Benzin-Bold.ttf') format('truetype');
-  font-weight: bold;
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -190,10 +190,14 @@ body {
    Typography Rules (Main Headings: BENZINA Uppercase. All else: Inter)
    ========================================================================== */
 h1.hero-title,
+h1.hero-title *,
 h2.section-title,
+h2.section-title *,
 .section-title,
-.cta-title {
-  font-family: var(--font-heading);
+.section-title *,
+.cta-title,
+.cta-title * {
+  font-family: 'BENZINA', 'Benzin', 'BENZIN', -apple-system, BlinkMacSystemFont, sans-serif !important;
   text-transform: uppercase;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -208,7 +212,7 @@ h2.section-title,
   margin-bottom: 22px;
 }
 
-h3, h4, p, span, a, button, input, div {
+h3, h4, p, a, button, input {
   font-family: var(--font-body);
 }
 
@@ -218,6 +222,7 @@ h3, h4, p, span, a, button, input, div {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
+  font-family: inherit !important;
 }
 
 /* Section Meta Tag */
@@ -411,7 +416,7 @@ h3, h4, p, span, a, button, input, div {
 }
 
 .hero-title {
-  font-family: var(--font-heading);
+  font-family: 'BENZINA', 'Benzin', 'BENZIN', -apple-system, BlinkMacSystemFont, sans-serif !important;
   text-transform: uppercase;
   font-size: clamp(3.2rem, 7.8vw, 6.2rem);
   line-height: 1.04;
