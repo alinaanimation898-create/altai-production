@@ -160,7 +160,7 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.7;
+  opacity: 0.95;
 }
 
 /* Interactive Cursor Sunset Spotlight */
@@ -217,24 +217,37 @@ h2.section-title,
   text-align: center;
 }
 
+.cases-section .section-title {
+  max-width: 1260px;
+}
+
 .title-primary-line,
 .title-line-1,
 .title-line-2,
 .title-line-3 {
   display: block;
+}
+
+.title-line-1,
+.title-line-3 {
   white-space: normal;
 }
 
+.title-line-2 {
+  white-space: nowrap;
+  font-size: clamp(0.92rem, 1.68vw, 1.55rem);
+  margin-top: 6px;
+}
+
 .title-secondary-line,
-.title-line-2,
 .title-line-3 {
   margin-top: 6px;
 }
 
 .cta-title {
-  font-size: clamp(2.8rem, 6.8vw, 5.2rem);
-  line-height: 1.04;
-  letter-spacing: -0.02em;
+  font-size: clamp(5.2rem, 11.5vw, 9.6rem);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
   margin-bottom: 24px;
   text-align: center;
 }
@@ -248,6 +261,7 @@ h2.section-title,
 .cta-lead-word {
   display: block;
   margin-bottom: 6px;
+  white-space: nowrap;
 }
 
 .cta-ideas-phrase {
@@ -922,15 +936,18 @@ h3, h4, p, a, button, input {
 
 .why-ethereal-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.94);
-  border: 1.5px solid rgba(226, 232, 240, 0.95);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid rgba(255, 255, 255, 0.92);
   border-radius: var(--radius-lg);
   padding: 34px 28px;
   min-height: 154px;
   overflow: hidden;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 10px 28px -8px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(56, 189, 248, 0.22);
+  box-shadow: 
+    0 10px 28px -8px rgba(15, 23, 42, 0.05),
+    0 0 18px rgba(255, 253, 245, 0.85),
+    0 0 0 1px rgba(254, 243, 199, 0.45);
   transition: var(--transition-smooth);
   display: flex;
   flex-direction: column;
@@ -974,88 +991,88 @@ h3, h4, p, a, button, input {
   z-index: 1;
 }
 
-/* Ambient Lights: Celestial Iridescent Palette (Ice Cyan, Glacial Sky Blue, Luminous White, Soft Periwinkle & Crystalline Lilac - No Hot Pink or Peach) */
+/* Ambient Lights: Luminous White & Soft Creamy Warm Radiance */
 .card-ambient-light {
   position: absolute;
-  width: 170px;
-  height: 170px;
+  width: 190px;
+  height: 190px;
   border-radius: 50%;
   pointer-events: none;
   transition: transform 0.5s ease, opacity 0.5s ease;
-  opacity: 0.7;
-  filter: blur(20px);
+  opacity: 0.75;
+  filter: blur(24px);
 }
 
 .why-ethereal-card:hover .card-ambient-light {
-  transform: scale(1.45);
+  transform: scale(1.4);
   opacity: 1;
 }
 
-/* Card 1: Top-Right (Electric Cyan & Ice Sky Blue) */
+/* Card 1: Top-Right (Pure White & Creamy Vanilla) */
 .why-ethereal-grid > article:nth-child(1) .card-ambient-light {
-  top: -40px;
-  right: -40px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.36) 0%, rgba(14, 165, 233, 0.18) 60%, transparent 100%);
+  top: -45px;
+  right: -45px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(255, 251, 235, 0.65) 45%, rgba(254, 243, 199, 0.22) 75%, transparent 100%);
 }
 
-/* Card 2: Bottom-Left (Brilliant White & Glacial Cyan Glow) */
+/* Card 2: Bottom-Left (Luminous White & Warm Ivory) */
 .why-ethereal-grid > article:nth-child(2) .card-ambient-light {
-  bottom: -40px;
-  left: -40px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(56, 189, 248, 0.3) 50%, rgba(14, 165, 233, 0.12) 75%, transparent 100%);
+  bottom: -45px;
+  left: -45px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.98) 0%, rgba(254, 249, 235, 0.7) 45%, rgba(253, 230, 138, 0.2) 75%, transparent 100%);
 }
 
-/* Card 3: Top-Left (Crystalline Periwinkle & Sky Blue) */
+/* Card 3: Top-Left (Delicate Cream Glow & Silky White) */
 .why-ethereal-grid > article:nth-child(3) .card-ambient-light {
-  top: -40px;
-  left: -40px;
-  background: radial-gradient(circle, rgba(129, 140, 248, 0.32) 0%, rgba(56, 189, 248, 0.2) 60%, transparent 100%);
+  top: -45px;
+  left: -45px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(255, 250, 240, 0.68) 50%, rgba(254, 243, 199, 0.22) 75%, transparent 100%);
 }
 
-/* Card 4: Bottom-Right (Luminous Turquoise & White Light) */
+/* Card 4: Bottom-Right (Soft Pearl & Clotted Cream) */
 .why-ethereal-grid > article:nth-child(4) .card-ambient-light {
-  bottom: -40px;
-  right: -40px;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.32) 0%, rgba(186, 230, 253, 0.25) 55%, transparent 100%);
+  bottom: -45px;
+  right: -45px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(254, 249, 235, 0.65) 45%, rgba(254, 240, 138, 0.2) 75%, transparent 100%);
 }
 
-/* Card 5: Center-Right (Soft Lavender Opal & Glacial Blue) */
+/* Card 5: Center-Right (Vanilla Custard & Pure Light) */
 .why-ethereal-grid > article:nth-child(5) .card-ambient-light {
   top: 30%;
   right: -50px;
-  background: radial-gradient(circle, rgba(167, 139, 250, 0.28) 0%, rgba(56, 189, 248, 0.2) 60%, transparent 100%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(255, 251, 235, 0.6) 45%, rgba(254, 243, 199, 0.2) 70%, transparent 100%);
 }
 
-/* Card 6: Top-Center (Pure White Highlight & Luminous Cyan) */
+/* Card 6: Top-Center (Creamy Milk & Luminous Radiance) */
 .why-ethereal-grid > article:nth-child(6) .card-ambient-light {
   top: -50px;
   left: 30%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.75) 0%, rgba(14, 165, 233, 0.3) 50%, transparent 100%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.98) 0%, rgba(254, 249, 235, 0.72) 40%, rgba(253, 230, 138, 0.2) 75%, transparent 100%);
 }
 
-/* Card 7: Bottom-Center (Deep Mountain Azure & Crystalline Violet) */
+/* Card 7: Bottom-Center (Warm Cream & Ethereal Glow) */
 .why-ethereal-grid > article:nth-child(7) .card-ambient-light {
   bottom: -50px;
   left: 35%;
-  background: radial-gradient(circle, rgba(2, 132, 199, 0.3) 0%, rgba(192, 132, 252, 0.18) 60%, transparent 100%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(255, 250, 240, 0.65) 45%, rgba(254, 243, 199, 0.2) 70%, transparent 100%);
 }
 
-/* Card 8: Center-Left (Ice Sky Blue & Ethereal Lilac) */
+/* Card 8: Center-Left (Ivory Velvet & Crystalline White) */
 .why-ethereal-grid > article:nth-child(8) .card-ambient-light {
   top: 35%;
   left: -50px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, rgba(167, 139, 250, 0.22) 60%, transparent 100%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(254, 249, 235, 0.65) 45%, rgba(253, 230, 138, 0.18) 75%, transparent 100%);
 }
 
 .why-ethereal-card:hover {
   transform: translateY(-6px);
-  background: rgba(255, 255, 255, 0.98);
-  border-color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.99);
+  border-color: rgba(255, 255, 255, 1);
   box-shadow: 
-    0 0 0 1px rgba(255, 255, 255, 0.95),
-    0 0 24px rgba(56, 189, 248, 0.45),
-    0 0 48px rgba(192, 132, 252, 0.35),
-    0 16px 36px -8px rgba(15, 23, 42, 0.12);
+    0 0 0 1.5px rgba(255, 255, 255, 1),
+    0 0 32px rgba(255, 253, 245, 0.98),
+    0 0 65px rgba(254, 243, 199, 0.6),
+    0 18px 38px -8px rgba(180, 160, 130, 0.14);
 }
 
 .card-text {
@@ -1097,7 +1114,7 @@ h3, h4, p, a, button, input {
 }
 
 .cta-open-wrapper {
-  max-width: 820px;
+  max-width: 1200px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -1457,13 +1474,19 @@ h3, h4, p, a, button, input {
   }
 
   .cta-title {
-    font-size: clamp(2.4rem, 9.5vw, 3.8rem) !important;
-    line-height: 1.05;
+    font-size: clamp(3.6rem, 15.5vw, 6.2rem) !important;
+    line-height: 0.94;
+  }
+
+  .title-line-2 {
+    font-size: clamp(0.72rem, 3.2vw, 0.98rem);
+    white-space: nowrap;
   }
 
   .cta-lead-word {
     display: block;
     margin-bottom: 4px;
+    white-space: nowrap;
   }
 
   .cta-ideas-phrase {
