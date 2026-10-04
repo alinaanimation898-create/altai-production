@@ -68,23 +68,23 @@ function initWindCanvas() {
 
   resize();
 
-  // 1. Soaring Mountain Seagulls Collection (High-Realism Ornithological Rendering)
-  const birdCount = 6;
+  // 1. Soaring Mountain Seagulls (Artistic Pencil-Sketch & Iridescent Neon Line-Art)
+  const birdCount = 7;
   const birds = [];
   for (let i = 0; i < birdCount; i++) {
-    const scale = 0.75 + Math.random() * 0.55; // 55px to 95px wingspan across depth planes
+    const scale = 0.65 + Math.random() * 0.65; // Wingspans from 45px to 95px across depth planes
     birds.push({
       x: (width / birdCount) * i + (Math.random() * 100 - 50),
       y: height * 0.08 + Math.random() * (height * 0.68),
-      vx: (1.0 + Math.random() * 0.65) * (0.85 + scale * 0.25),
-      vy: (Math.random() - 0.48) * 0.22,
+      vx: (0.95 + Math.random() * 0.6) * (0.85 + scale * 0.25),
+      vy: (Math.random() - 0.48) * 0.2,
       scale: scale,
-      span: 32 + Math.random() * 8, // Half wingspan: 32-40px => total 64-80px
-      alpha: 0.8 + scale * 0.18,
+      span: 26 + Math.random() * 12, // Half wingspan: 26-38px => total 52-76px
+      alpha: 0.78 + scale * 0.2,
       flap: Math.random() * Math.PI * 2,
-      flapSpeed: 0.042 + Math.random() * 0.02,
+      flapSpeed: 0.038 + Math.random() * 0.02,
       glideTimer: Math.random() * 150,
-      glideDuration: 140 + Math.random() * 240,
+      glideDuration: 150 + Math.random() * 250,
       isGliding: Math.random() > 0.35
     });
   }
@@ -109,174 +109,116 @@ function initWindCanvas() {
     ctx.translate(b.x, b.y);
     ctx.scale(b.scale, b.scale);
 
-    // Dynamic bank angle based on flight curve and thermals
-    const bank = Math.sin(b.flap * 0.35) * 0.08 + (b.vy * 0.25);
+    // Natural banking tilt based on atmospheric lift and trajectory
+    const bank = Math.sin(b.flap * 0.35) * 0.09 + (b.vy * 0.3);
     ctx.rotate(bank);
 
-    const span = b.span; // 32-40px half-span (total 64-80px)
-    
-    // Wing flap offset with phase lag for flexible primaries
-    const flap = b.isGliding ? -0.12 : Math.sin(b.flap);
-    const flapTip = b.isGliding ? -0.15 : Math.sin(b.flap - 0.35);
-
-    // Elbow and wingtip Z-offsets projected on 2D plane
-    const elbowOffset = flap * 6.5;
-    const tipOffset = flapTip * 13.0;
-
+    const span = b.span; // Half-wingspan: 26 to 44 px (total wingspan 52 to 88 px)
     const alpha = b.alpha;
 
-    // Atmospheric shadow for depth
-    ctx.shadowColor = 'rgba(15, 23, 42, 0.16)';
+    // Wing kinematics: smooth harmonic flapping with phase lag
+    const flap = b.isGliding ? -0.1 : Math.sin(b.flap);
+    const flapTip = b.isGliding ? -0.14 : Math.sin(b.flap - 0.4);
+
+    // Dynamic elbow and tip heights
+    // Resting arch: elbow rises by -span * 0.32, tip is at -span * 0.06
+    const elbowY = -span * 0.32 + flap * 9.0;
+    const tipY = -span * 0.06 + flapTip * 16.0;
+
+    // Wing horizontal sweep
+    const elbowX = span * 0.46;
+    const tipX = span;
+
+    // Gradient along wings: Lilac tips -> Ice Cyan mid -> Pure White core
+    const wingGrad = ctx.createLinearGradient(-tipX, 0, tipX, 0);
+    wingGrad.addColorStop(0, `rgba(192, 132, 252, ${alpha * 0.95})`);     // left tip: ethereal lilac
+    wingGrad.addColorStop(0.25, `rgba(56, 189, 248, ${alpha * 0.98})`);   // left mid: ice cyan
+    wingGrad.addColorStop(0.5, `rgba(255, 255, 255, ${alpha * 1.0})`);     // center: luminous white
+    wingGrad.addColorStop(0.75, `rgba(56, 189, 248, ${alpha * 0.98})`);   // right mid: ice cyan
+    wingGrad.addColorStop(1, `rgba(192, 132, 252, ${alpha * 0.95})`);     // right tip: ethereal lilac
+
+    // =========================================================================
+    // 1. NEON LUMINESCENT GLOW PASS (Ambient Aura in site colors)
+    // =========================================================================
+    ctx.save();
+    ctx.shadowColor = 'rgba(56, 189, 248, 0.75)';
+    ctx.shadowBlur = 10 * b.scale;
+    ctx.strokeStyle = `rgba(56, 189, 248, ${alpha * 0.5})`;
+    ctx.lineWidth = 3.2;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    ctx.beginPath();
+    // Left tip to body
+    ctx.moveTo(-tipX, tipY);
+    ctx.quadraticCurveTo(-elbowX, elbowY, 0, 1.5);
+    // Body to right tip
+    ctx.quadraticCurveTo(elbowX, elbowY, tipX, tipY);
+    ctx.stroke();
+    ctx.restore();
+
+    // =========================================================================
+    // 2. SECONDARY PENCIL SKETCH CONTOUR (Hand-Drawn Pencil Aesthetic)
+    // =========================================================================
+    ctx.save();
+    ctx.strokeStyle = `rgba(148, 163, 184, ${alpha * 0.45})`;
+    ctx.lineWidth = 0.8;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    // Subtle second contour line slightly offset, like pencil lines on drafting paper
+    ctx.moveTo(-tipX * 0.94, tipY + 1.2);
+    ctx.quadraticCurveTo(-elbowX * 0.96, elbowY + 1.8, 0, 3.2);
+    ctx.quadraticCurveTo(elbowX * 0.96, elbowY + 1.8, tipX * 0.94, tipY + 1.2);
+    ctx.stroke();
+
+    // Tiny tapered pencil tail flick at the center
+    ctx.beginPath();
+    ctx.moveTo(0, 1.5);
+    ctx.lineTo(0, 5.5);
+    ctx.strokeStyle = `rgba(148, 163, 184, ${alpha * 0.6})`;
+    ctx.lineWidth = 1.0;
+    ctx.stroke();
+    ctx.restore();
+
+    // =========================================================================
+    // 3. MAIN CALLIGRAPHIC NEON SILHOUETTE (Variable Line Weight Ribbon)
+    // =========================================================================
+    // Forms a continuous calligraphic gull shape: thick at inner wings, needle-sharp at tips
+    ctx.save();
+    ctx.beginPath();
+    // Upper contour (from left tip -> left elbow -> center head -> right elbow -> right tip)
+    ctx.moveTo(-tipX, tipY);
+    ctx.quadraticCurveTo(-elbowX, elbowY - 1.2, 0, -1.5);
+    ctx.quadraticCurveTo(elbowX, elbowY - 1.2, tipX, tipY);
+
+    // Lower contour (from right tip -> right elbow bottom -> center body tail -> left elbow bottom -> left tip)
+    ctx.quadraticCurveTo(elbowX, elbowY + 1.5, 0, 3.6);
+    ctx.quadraticCurveTo(-elbowX, elbowY + 1.5, -tipX, tipY);
+    ctx.closePath();
+
+    ctx.fillStyle = wingGrad;
+    ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+    ctx.shadowBlur = 5;
+    ctx.fill();
+
+    // Sharp central spine stroke
+    ctx.strokeStyle = `rgba(255, 255, 255, ${alpha * 0.9})`;
+    ctx.lineWidth = 1.0;
+    ctx.stroke();
+    ctx.restore();
+
+    // =========================================================================
+    // 4. WINGTIP LIGHT SPARKS (Diamond Shimmer in the Mountain Breeze)
+    // =========================================================================
+    ctx.save();
+    ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.95})`;
+    ctx.shadowColor = 'rgba(192, 132, 252, 0.8)';
     ctx.shadowBlur = 6;
-    ctx.shadowOffsetY = 2;
-
-    // =========================================================================
-    // 1. WINGS (Left Wing -Y and Right Wing +Y extending perpendicular to fuselage)
-    // =========================================================================
-    
-    // --- Upper / Left Wing (-Y) ---
-    const upperElbowX = -span * 0.15;
-    const upperElbowY = -span * 0.48 + elbowOffset * 0.6;
-    const upperTipX = -span * 0.45;
-    const upperTipY = -span + tipOffset;
-
     ctx.beginPath();
-    ctx.moveTo(2, -2); // shoulder
-    // Leading edge: shoulder -> elbow -> swept-back tip
-    ctx.quadraticCurveTo(0, -span * 0.25 + elbowOffset * 0.4, upperElbowX, upperElbowY);
-    ctx.quadraticCurveTo(-span * 0.28, -span * 0.75 + tipOffset * 0.7, upperTipX, upperTipY);
-    // Trailing edge: primaries with slight feather notches
-    ctx.quadraticCurveTo(-span * 0.38, -span * 0.72 + tipOffset * 0.65, -span * 0.26, -span * 0.5 + elbowOffset * 0.45);
-    ctx.quadraticCurveTo(-span * 0.22, -span * 0.35 + elbowOffset * 0.3, -span * 0.12, -span * 0.18);
-    ctx.quadraticCurveTo(-span * 0.05, -3, -6, -1);
-    ctx.closePath();
-
-    // Upper wing fill: pearly white with delicate slate shading on trailing edge
-    const upperWingGrad = ctx.createLinearGradient(0, 0, upperTipX, upperTipY);
-    upperWingGrad.addColorStop(0, `rgba(255, 255, 255, ${alpha * 0.98})`);
-    upperWingGrad.addColorStop(0.65, `rgba(241, 245, 249, ${alpha * 0.95})`);
-    upperWingGrad.addColorStop(1, `rgba(203, 213, 225, ${alpha * 0.92})`);
-    ctx.fillStyle = upperWingGrad;
-    ctx.fill();
-
-    // Upper Wing Black Tip (Primaries)
-    ctx.save();
-    ctx.beginPath();
-    ctx.moveTo(upperTipX, upperTipY);
-    ctx.quadraticCurveTo(-span * 0.42, -span * 0.88 + tipOffset * 0.85, -span * 0.35, -span * 0.82 + tipOffset * 0.8);
-    ctx.quadraticCurveTo(-span * 0.30, -span * 0.70 + tipOffset * 0.65, -span * 0.38, -span * 0.72 + tipOffset * 0.65);
-    ctx.closePath();
-    ctx.fillStyle = `rgba(15, 23, 42, ${alpha * 0.96})`;
-    ctx.fill();
-
-    // Signature White Mirror Spot on primary feather
-    ctx.beginPath();
-    ctx.arc(-span * 0.41, -span * 0.92 + tipOffset * 0.9, 1.2, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.95})`;
+    ctx.arc(-tipX, tipY, 1.1, 0, Math.PI * 2);
+    ctx.arc(tipX, tipY, 1.1, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
-
-    // --- Lower / Right Wing (+Y) ---
-    const lowerElbowX = -span * 0.15;
-    const lowerElbowY = span * 0.48 - elbowOffset * 0.6;
-    const lowerTipX = -span * 0.45;
-    const lowerTipY = span - tipOffset;
-
-    ctx.beginPath();
-    ctx.moveTo(2, 2); // shoulder
-    // Leading edge: shoulder -> elbow -> swept-back tip
-    ctx.quadraticCurveTo(0, span * 0.25 - elbowOffset * 0.4, lowerElbowX, lowerElbowY);
-    ctx.quadraticCurveTo(-span * 0.28, span * 0.75 - tipOffset * 0.7, lowerTipX, lowerTipY);
-    // Trailing edge: primaries with slight feather notches
-    ctx.quadraticCurveTo(-span * 0.38, span * 0.72 - tipOffset * 0.65, -span * 0.26, span * 0.5 - elbowOffset * 0.45);
-    ctx.quadraticCurveTo(-span * 0.22, span * 0.35 - elbowOffset * 0.3, -span * 0.12, span * 0.18);
-    ctx.quadraticCurveTo(-span * 0.05, 3, -6, 1);
-    ctx.closePath();
-
-    // Lower wing fill
-    const lowerWingGrad = ctx.createLinearGradient(0, 0, lowerTipX, lowerTipY);
-    lowerWingGrad.addColorStop(0, `rgba(255, 255, 255, ${alpha * 0.98})`);
-    lowerWingGrad.addColorStop(0.65, `rgba(241, 245, 249, ${alpha * 0.95})`);
-    lowerWingGrad.addColorStop(1, `rgba(203, 213, 225, ${alpha * 0.92})`);
-    ctx.fillStyle = lowerWingGrad;
-    ctx.fill();
-
-    // Lower Wing Black Tip (Primaries)
-    ctx.save();
-    ctx.beginPath();
-    ctx.moveTo(lowerTipX, lowerTipY);
-    ctx.quadraticCurveTo(-span * 0.42, span * 0.88 - tipOffset * 0.85, -span * 0.35, span * 0.82 - tipOffset * 0.8);
-    ctx.quadraticCurveTo(-span * 0.30, span * 0.70 - tipOffset * 0.65, -span * 0.38, span * 0.72 - tipOffset * 0.65);
-    ctx.closePath();
-    ctx.fillStyle = `rgba(15, 23, 42, ${alpha * 0.96})`;
-    ctx.fill();
-
-    // Signature White Mirror Spot on primary feather
-    ctx.beginPath();
-    ctx.arc(-span * 0.41, span * 0.92 - tipOffset * 0.9, 1.2, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.95})`;
-    ctx.fill();
-    ctx.restore();
-
-    // =========================================================================
-    // 2. TAIL FEATHERS (-X)
-    // =========================================================================
-    ctx.beginPath();
-    ctx.moveTo(-6, -1.8);
-    ctx.lineTo(-16, -4.5);
-    ctx.lineTo(-18, 0);
-    ctx.lineTo(-16, 4.5);
-    ctx.lineTo(-6, 1.8);
-    ctx.closePath();
-    ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.98})`;
-    ctx.fill();
-    ctx.strokeStyle = `rgba(203, 213, 225, ${alpha * 0.45})`;
-    ctx.lineWidth = 0.6;
-    ctx.stroke();
-
-    // =========================================================================
-    // 3. FUSELAGE / BODY & HEAD (+X)
-    // =========================================================================
-    ctx.beginPath();
-    // Head front
-    ctx.moveTo(14, 0);
-    // Upper contour from head over shoulder to tail
-    ctx.quadraticCurveTo(8, -3.2, 0, -3.5);
-    ctx.quadraticCurveTo(-6, -3.2, -8, -1.5);
-    // Lower contour from tail over breast to head
-    ctx.lineTo(-8, 1.5);
-    ctx.quadraticCurveTo(-6, 3.2, 0, 3.5);
-    ctx.quadraticCurveTo(8, 3.2, 14, 0);
-    ctx.closePath();
-
-    // Volumetric 3D cylindrical body shading
-    const bodyGrad = ctx.createLinearGradient(0, -3.5, 0, 3.5);
-    bodyGrad.addColorStop(0, `rgba(241, 245, 249, ${alpha * 0.98})`);
-    bodyGrad.addColorStop(0.5, `rgba(255, 255, 255, ${alpha * 1.0})`);
-    bodyGrad.addColorStop(1, `rgba(226, 232, 240, ${alpha * 0.96})`);
-    ctx.fillStyle = bodyGrad;
-    ctx.fill();
-
-    // Subtle outline
-    ctx.strokeStyle = `rgba(148, 163, 184, ${alpha * 0.4})`;
-    ctx.lineWidth = 0.7;
-    ctx.stroke();
-
-    // Amber Beak at +X
-    ctx.beginPath();
-    ctx.moveTo(13.5, -1.2);
-    ctx.lineTo(19.5, 0);
-    ctx.lineTo(13.5, 1.2);
-    ctx.closePath();
-    ctx.fillStyle = `rgba(245, 158, 11, ${alpha * 0.98})`;
-    ctx.fill();
-
-    // Tiny dark eye dots on both sides of head
-    ctx.beginPath();
-    ctx.arc(10.5, -1.5, 0.75, 0, Math.PI * 2);
-    ctx.arc(10.5, 1.5, 0.75, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(15, 23, 42, ${alpha * 0.9})`;
-    ctx.fill();
 
     ctx.restore();
   }
@@ -379,13 +321,13 @@ function initWindCanvas() {
       }
 
       // Smooth wrap around screen edges
-      if (b.x > width + 100) {
-        b.x = -100;
+      if (b.x > width + 80) {
+        b.x = -80;
         b.y = height * 0.08 + Math.random() * (height * 0.68);
-        b.scale = 0.75 + Math.random() * 0.55;
-        b.span = 32 + Math.random() * 8;
-        b.vx = (1.0 + Math.random() * 0.65) * (0.85 + b.scale * 0.25);
-        b.alpha = 0.8 + b.scale * 0.18;
+        b.scale = 0.65 + Math.random() * 0.65;
+        b.span = 26 + Math.random() * 12;
+        b.vx = (0.95 + Math.random() * 0.6) * (0.85 + b.scale * 0.25);
+        b.alpha = 0.78 + b.scale * 0.2;
       }
 
       drawSeagull(b);
