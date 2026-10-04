@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   1. Mountain Wind Breeze Canvas (Ethereal Altai Current)
+   1. Sky Atmosphere Canvas: Soaring Mountain Seagulls & Altai Sun Flares
    ========================================================================== */
 function initWindCanvas() {
   const canvas = document.getElementById('wind-canvas');
@@ -37,7 +37,7 @@ function initWindCanvas() {
   let animationId = null;
   let isVisible = true;
 
-  // Mouse interaction coordinates (subtle deflection)
+  // Mouse interaction coordinates (subtle lens flare parallax)
   let mouse = { x: -1000, y: -1000, active: false };
 
   function resize() {
@@ -68,43 +68,102 @@ function initWindCanvas() {
 
   resize();
 
-  // Color palette for wind currents: ice cyan, twilight rose, lavender, pearlescent white
-  const windColors = [
-    'rgba(56, 189, 248, 0.14)',  // sky cyan
-    'rgba(244, 114, 182, 0.12)', // sunset rose
-    'rgba(192, 132, 252, 0.10)', // lavender
-    'rgba(255, 255, 255, 0.22)', // pearl white
-    'rgba(14, 165, 233, 0.08)'   // glacial deep
-  ];
-
-  // Wind waves
-  const streamsCount = 9;
-  const streams = [];
-  for (let i = 0; i < streamsCount; i++) {
-    streams.push({
-      baseY: (height / (streamsCount + 1)) * (i + 1),
-      speed: 0.0008 + Math.random() * 0.0009,
-      amplitude: 18 + Math.random() * 26,
-      frequency: 0.0018 + Math.random() * 0.002,
-      phase: Math.random() * Math.PI * 2,
-      color: windColors[i % windColors.length],
-      lineWidth: 1 + Math.random() * 1.5
+  // 1. Soaring Seagulls / Mountain Birds Collection
+  const birdCount = 6;
+  const birds = [];
+  for (let i = 0; i < birdCount; i++) {
+    const scale = 0.45 + Math.random() * 0.65;
+    birds.push({
+      x: Math.random() * (width + 200) - 100,
+      y: height * 0.08 + Math.random() * (height * 0.72),
+      vx: (0.75 + Math.random() * 0.85) * (0.8 + scale * 0.4),
+      vyBase: (Math.random() - 0.48) * 0.25,
+      scale: scale,
+      alpha: 0.35 + scale * 0.45,
+      flap: Math.random() * Math.PI * 2,
+      flapSpeed: 0.055 + Math.random() * 0.035,
+      glideTimer: Math.random() * 180,
+      glideDuration: 120 + Math.random() * 200,
+      isGliding: false
     });
   }
 
-  // Drifting wind dust & particles
-  const particleCount = 38;
-  const particles = [];
-  for (let i = 0; i < particleCount; i++) {
-    particles.push({
+  // 2. Altai Sun Flare & Prismatic Bokeh Flares
+  const flares = [
+    { dist: 0.25, size: 28, color: 'rgba(255, 255, 255, 0.42)', blur: 4 },
+    { dist: 0.45, size: 45, color: 'rgba(56, 189, 248, 0.22)', blur: 8 },
+    { dist: 0.65, size: 20, color: 'rgba(253, 224, 71, 0.18)', blur: 5 },
+    { dist: 0.85, size: 68, color: 'rgba(192, 132, 252, 0.16)', blur: 12 },
+    { dist: 1.15, size: 36, color: 'rgba(56, 189, 248, 0.18)', blur: 6 },
+    { dist: 1.45, size: 85, color: 'rgba(224, 242, 254, 0.15)', blur: 16 }
+  ];
+
+  // 3. Shimmering Sun Sparkles / Diamond Light Dust
+  const sparkleCount = 18;
+  const sparkles = [];
+  for (let i = 0; i < sparkleCount; i++) {
+    sparkles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: 0.35 + Math.random() * 0.65,
-      vy: (Math.random() - 0.5) * 0.2,
-      size: 0.8 + Math.random() * 1.8,
-      alpha: 0.15 + Math.random() * 0.45,
-      color: windColors[Math.floor(Math.random() * windColors.length)]
+      size: 1.5 + Math.random() * 2.5,
+      phase: Math.random() * Math.PI * 2,
+      speed: 0.02 + Math.random() * 0.03,
+      driftX: 0.15 + Math.random() * 0.3,
+      driftY: -0.05 + Math.random() * 0.1
     });
+  }
+
+  function drawSeagull(b) {
+    ctx.save();
+    ctx.translate(b.x, b.y);
+    ctx.scale(b.scale, b.scale);
+
+    // Subtle bank angle based on flight curve
+    const bank = Math.sin(b.flap * 0.4) * 0.06;
+    ctx.rotate(bank);
+
+    const wingSpan = 26;
+    const flapOffset = b.isGliding ? 1.2 : Math.sin(b.flap) * 8.5;
+
+    ctx.beginPath();
+    // Left wing
+    ctx.moveTo(0, 0);
+    ctx.quadraticCurveTo(-wingSpan * 0.45, -9 + flapOffset, -wingSpan, flapOffset * 0.85);
+    ctx.quadraticCurveTo(-wingSpan * 0.4, -2 + flapOffset * 0.4, 0, 1.8);
+    // Right wing
+    ctx.quadraticCurveTo(wingSpan * 0.4, -2 + flapOffset * 0.4, wingSpan, flapOffset * 0.85);
+    ctx.quadraticCurveTo(wingSpan * 0.45, -9 + flapOffset, 0, 0);
+    ctx.closePath();
+
+    ctx.fillStyle = `rgba(255, 255, 255, ${b.alpha * 0.85})`;
+    ctx.shadowColor = 'rgba(56, 189, 248, 0.35)';
+    ctx.shadowBlur = 6 * b.scale;
+    ctx.fill();
+
+    // Wing top outline
+    ctx.strokeStyle = `rgba(224, 242, 254, ${b.alpha * 0.9})`;
+    ctx.lineWidth = 0.8;
+    ctx.stroke();
+
+    ctx.restore();
+  }
+
+  function drawStarSparkle(x, y, radius, alpha) {
+    if (alpha <= 0.01) return;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.9})`;
+    ctx.shadowColor = 'rgba(125, 211, 252, 0.6)';
+    ctx.shadowBlur = 8;
+
+    ctx.beginPath();
+    for (let i = 0; i < 4; i++) {
+      ctx.lineTo(Math.cos(i * Math.PI / 2) * radius, Math.sin(i * Math.PI / 2) * radius);
+      ctx.lineTo(Math.cos(i * Math.PI / 2 + Math.PI / 4) * (radius * 0.22), Math.sin(i * Math.PI / 2 + Math.PI / 4) * (radius * 0.22));
+    }
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
   }
 
   let lastTime = 0;
@@ -120,60 +179,116 @@ function initWindCanvas() {
 
     ctx.clearRect(0, 0, width, height);
 
-    // 1. Draw flowing wind ribbons
-    for (let s of streams) {
+    // =========================================================================
+    // 1. Altai Mountain Sun Flares & Luminous Prismatic Glow
+    // =========================================================================
+    const sunBaseX = width * 0.82;
+    const sunBaseY = height * 0.15;
+    
+    // Parallax mouse offset
+    const parallaxX = mouse.active ? (mouse.x - width / 2) * 0.025 : 0;
+    const parallaxY = mouse.active ? (mouse.y - height / 2) * 0.025 : 0;
+    const sunX = sunBaseX + parallaxX;
+    const sunY = sunBaseY + parallaxY;
+
+    // Breathing pulse
+    const sunPulse = 1 + Math.sin(timestamp * 0.0008) * 0.08;
+
+    // A. Sun Core Radiance
+    const sunGrad = ctx.createRadialGradient(sunX, sunY, 0, sunX, sunY, 180 * sunPulse);
+    sunGrad.addColorStop(0, 'rgba(255, 255, 255, 0.45)');
+    sunGrad.addColorStop(0.18, 'rgba(254, 240, 138, 0.18)');
+    sunGrad.addColorStop(0.45, 'rgba(56, 189, 248, 0.12)');
+    sunGrad.addColorStop(0.75, 'rgba(192, 132, 252, 0.06)');
+    sunGrad.addColorStop(1, 'transparent');
+
+    ctx.fillStyle = sunGrad;
+    ctx.beginPath();
+    ctx.arc(sunX, sunY, 180 * sunPulse, 0, Math.PI * 2);
+    ctx.fill();
+
+    // B. Soft Anamorphic Horizontal Flare Beam
+    const beamWidth = 260 * sunPulse;
+    const beamHeight = 2.5;
+    const beamGrad = ctx.createLinearGradient(sunX - beamWidth, sunY, sunX + beamWidth, sunY);
+    beamGrad.addColorStop(0, 'transparent');
+    beamGrad.addColorStop(0.35, 'rgba(56, 189, 248, 0.15)');
+    beamGrad.addColorStop(0.5, 'rgba(255, 255, 255, 0.45)');
+    beamGrad.addColorStop(0.65, 'rgba(192, 132, 252, 0.15)');
+    beamGrad.addColorStop(1, 'transparent');
+
+    ctx.fillStyle = beamGrad;
+    ctx.beginPath();
+    ctx.ellipse(sunX, sunY, beamWidth, beamHeight, -0.08, 0, Math.PI * 2);
+    ctx.fill();
+
+    // C. Optical Lens Flare Discs along Sun Axis
+    const centerX = width * 0.5;
+    const centerY = height * 0.5;
+    const axisDX = centerX - sunX;
+    const axisDY = centerY - sunY;
+
+    for (let f of flares) {
+      const fx = sunX + axisDX * f.dist;
+      const fy = sunY + axisDY * f.dist;
+      
+      ctx.save();
       ctx.beginPath();
-      ctx.strokeStyle = s.color;
-      ctx.lineWidth = s.lineWidth;
-      ctx.lineCap = 'round';
-
-      const step = 28;
-      for (let x = 0; x <= width + step; x += step) {
-        // Natural sine flow
-        let waveY = Math.sin(x * s.frequency + timestamp * s.speed + s.phase) * s.amplitude;
-        
-        // Secondary harmonic for organic mountain wind flutter
-        waveY += Math.cos(x * s.frequency * 1.8 - timestamp * s.speed * 0.6) * (s.amplitude * 0.35);
-
-        // Subtle mouse breeze repulsion
-        if (mouse.active) {
-          const dx = x - mouse.x;
-          const dy = (s.baseY + waveY) - mouse.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 180) {
-            const push = (1 - dist / 180) * 22;
-            waveY += dy > 0 ? push : -push;
-          }
-        }
-
-        const y = s.baseY + waveY;
-
-        if (x === 0) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
-        }
-      }
-      ctx.stroke();
+      ctx.arc(fx, fy, f.size * (0.92 + Math.sin(timestamp * 0.001 + f.dist) * 0.08), 0, Math.PI * 2);
+      ctx.fillStyle = f.color;
+      ctx.shadowColor = f.color;
+      ctx.shadowBlur = f.blur;
+      ctx.fill();
+      ctx.restore();
     }
 
-    // 2. Draw drifting mountain breeze particles
-    for (let p of particles) {
-      p.x += p.vx;
-      p.y += p.vy + Math.sin(timestamp * 0.0015 + p.x * 0.005) * 0.3;
+    // =========================================================================
+    // 2. Shimmering Mountain Sunlight Diamond Sparkles
+    // =========================================================================
+    for (let sp of sparkles) {
+      sp.x += sp.driftX;
+      sp.y += sp.driftY;
+      if (sp.x > width + 20) sp.x = -20;
+      if (sp.y < -20) sp.y = height + 20;
 
-      // Wrap around screen seamlessly
-      if (p.x > width + 10) {
-        p.x = -10;
-        p.y = Math.random() * height;
+      const alpha = Math.max(0, Math.sin(timestamp * sp.speed + sp.phase));
+      drawStarSparkle(sp.x, sp.y, sp.size, alpha * 0.65);
+    }
+
+    // =========================================================================
+    // 3. Soaring Seagulls / Gliding Mountain Birds
+    // =========================================================================
+    for (let b of birds) {
+      // Advance position
+      b.x += b.vx;
+      b.y += b.vyBase + Math.sin(timestamp * 0.0012 + b.scale * 4) * 0.35;
+
+      // Flight flap vs glide cycle
+      b.glideTimer++;
+      if (b.isGliding) {
+        if (b.glideTimer > b.glideDuration) {
+          b.isGliding = false;
+          b.glideTimer = 0;
+        }
+      } else {
+        b.flap += b.flapSpeed;
+        if (b.glideTimer > 90 && Math.sin(b.flap) > 0.85) {
+          b.isGliding = true;
+          b.glideTimer = 0;
+          b.glideDuration = 100 + Math.random() * 180;
+        }
       }
-      if (p.y > height + 10) p.y = -10;
-      if (p.y < -10) p.y = height + 10;
 
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = p.color;
-      ctx.fill();
+      // Wrap smoothly around screen
+      if (b.x > width + 60) {
+        b.x = -60;
+        b.y = height * 0.06 + Math.random() * (height * 0.74);
+        b.scale = 0.45 + Math.random() * 0.65;
+        b.vx = (0.75 + Math.random() * 0.85) * (0.8 + b.scale * 0.4);
+        b.alpha = 0.35 + b.scale * 0.45;
+      }
+
+      drawSeagull(b);
     }
 
     animationId = requestAnimationFrame(animate);

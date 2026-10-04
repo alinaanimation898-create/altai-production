@@ -123,7 +123,7 @@ body {
   right: 15%;
   width: 550px;
   height: 550px;
-  background: radial-gradient(circle, rgba(244, 114, 182, 0.4) 0%, rgba(192, 132, 252, 0.2) 70%, transparent 100%);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, rgba(192, 132, 252, 0.18) 70%, transparent 100%);
   animation-duration: 18s;
 }
 
@@ -132,7 +132,7 @@ body {
   left: -5%;
   width: 650px;
   height: 650px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, rgba(129, 140, 248, 0.2) 70%, transparent 100%);
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.28) 0%, rgba(129, 140, 248, 0.18) 70%, transparent 100%);
   animation-duration: 24s;
   animation-delay: -5s;
 }
@@ -142,7 +142,7 @@ body {
   right: 5%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(253, 164, 175, 0.35) 0%, rgba(253, 224, 71, 0.15) 70%, transparent 100%);
+  background: radial-gradient(circle, rgba(224, 242, 254, 0.4) 0%, rgba(167, 139, 250, 0.2) 70%, transparent 100%);
   animation-duration: 22s;
   animation-delay: -10s;
 }
@@ -217,21 +217,26 @@ h2.section-title,
   text-align: center;
 }
 
-.title-primary-line {
+.title-primary-line,
+.title-line-1,
+.title-line-2,
+.title-line-3 {
   display: block;
   white-space: normal;
 }
 
-.title-secondary-line {
-  display: block;
-  margin-top: 4px;
+.title-secondary-line,
+.title-line-2,
+.title-line-3 {
+  margin-top: 6px;
 }
 
 .cta-title {
-  font-size: clamp(2.4rem, 5.8vw, 4.4rem);
-  line-height: 1.1;
+  font-size: clamp(2.8rem, 6.8vw, 5.2rem);
+  line-height: 1.04;
   letter-spacing: -0.02em;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
+  text-align: center;
 }
 
 .hero-brand-line,
@@ -241,11 +246,12 @@ h2.section-title,
 }
 
 .cta-lead-word {
-  display: inline-block;
+  display: block;
+  margin-bottom: 6px;
 }
 
 .cta-ideas-phrase {
-  display: inline-block;
+  display: block;
   white-space: nowrap !important;
 }
 
@@ -902,7 +908,8 @@ h3, h4, p, a, button, input {
   background: rgba(255, 255, 255, 0.94);
   border: 1.5px solid rgba(226, 232, 240, 0.95);
   border-radius: var(--radius-lg);
-  padding: 34px 28px 30px;
+  padding: 34px 28px;
+  min-height: 154px;
   overflow: hidden;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -910,6 +917,7 @@ h3, h4, p, a, button, input {
   transition: var(--transition-smooth);
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 /* Iridescent Waves Card Backdrop from User Reference */
@@ -1024,33 +1032,21 @@ h3, h4, p, a, button, input {
 
 .why-ethereal-card:hover {
   transform: translateY(-6px);
-  background: #ffffff;
-  border-color: rgba(56, 189, 248, 0.65);
-  box-shadow: 0 20px 42px -10px rgba(14, 165, 233, 0.22), 0 0 24px rgba(192, 132, 252, 0.18);
-}
-
-.card-title {
-  font-family: var(--font-body);
-  font-size: 1.22rem;
-  font-weight: 700;
-  line-height: 1.35;
-  margin-bottom: 14px;
-  color: #090d16;
-  letter-spacing: -0.01em;
-  transition: var(--transition-smooth);
-}
-
-.why-ethereal-card:hover .card-title {
-  color: #0284c7;
-  text-shadow: 0 0 12px rgba(14, 165, 233, 0.35);
-  transform: translateX(2px);
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.95),
+    0 0 24px rgba(56, 189, 248, 0.45),
+    0 0 48px rgba(192, 132, 252, 0.35),
+    0 16px 36px -8px rgba(15, 23, 42, 0.12);
 }
 
 .card-text {
-  font-size: 0.96rem;
-  color: #1e293b;
-  line-height: 1.68;
-  font-weight: 450;
+  font-size: 1.05rem;
+  color: #0f172a;
+  line-height: 1.64;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 /* ==========================================================================
@@ -1444,8 +1440,8 @@ h3, h4, p, a, button, input {
   }
 
   .cta-title {
-    font-size: clamp(1.65rem, 7.2vw, 2.6rem) !important;
-    line-height: 1.14;
+    font-size: clamp(2.4rem, 9.5vw, 3.8rem) !important;
+    line-height: 1.05;
   }
 
   .cta-lead-word {
