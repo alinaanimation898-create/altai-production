@@ -60,15 +60,6 @@ const casesData = [
     posterUrl: "https://edge-ams-1.kinescopecdn.net/0a152b00-5a3b-4bde-9fea-a91fcfae8194/posters/b7a4ac33-0a76-420b-bea7-d6658dee140e/poster_lg/7247b4e7-7b3c-4dee-a115-a9c9dd557f15.jpg"
   },
   {
-    id: "gem-team",
-    title: "Gem-team",
-    category: "Видео-приложение",
-    year: "2026",
-    embedUrl: "https://kinescope.io/embed/qnHJ8sXLXxiCL98JT6CLzm",
-    description: "Продуктовое AI-видео нового поколения для инновационного сервиса с упором на UX и эмоциональный сторителлинг",
-    posterUrl: "https://edge-ams-1.kinescopecdn.net/0a152b00-5a3b-4bde-9fea-a91fcfae8194/posters/dea74c22-6556-40b6-9f52-ba468fd8e313/poster_lg/a5eb9e50-24cb-4cac-927d-9e9e7c4f21da.jpg"
-  },
-  {
     id: "eurochem",
     title: "«Еврохим»",
     category: "Промышленный ролик",
@@ -76,6 +67,15 @@ const casesData = [
     embedUrl: "https://kinescope.io/embed/kiXcxwRzU2BpnTDicWMEvT",
     description: "Индустриальная мощь и инновационные решения: масштабные 3D/AI визуализации производственных циклов и экосистем",
     posterUrl: "https://edge-ams-1.kinescopecdn.net/0a152b00-5a3b-4bde-9fea-a91fcfae8194/posters/6d6cbad4-6b0d-43c6-b11b-d3b137682627/poster_lg/20277e06-2294-4a10-acf3-618355ab6850.jpg"
+  },
+  {
+    id: "gem-team",
+    title: "Gem-team",
+    category: "Видео-приложение",
+    year: "2026",
+    embedUrl: "https://kinescope.io/embed/qnHJ8sXLXxiCL98JT6CLzm",
+    description: "Продуктовое AI-видео нового поколения для инновационного сервиса с упором на UX и эмоциональный сторителлинг",
+    posterUrl: "https://edge-ams-1.kinescopecdn.net/0a152b00-5a3b-4bde-9fea-a91fcfae8194/posters/dea74c22-6556-40b6-9f52-ba468fd8e313/poster_lg/a5eb9e50-24cb-4cac-927d-9e9e7c4f21da.jpg"
   }
 ];
 
