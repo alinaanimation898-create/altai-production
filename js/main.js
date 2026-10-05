@@ -565,6 +565,19 @@ function initCasesSection() {
 
   track.innerHTML = primaryCardsHtml + cloneCardsHtml;
 
+  // Touch pause/resume for mobile devices
+  let touchPauseTimer = null;
+  track.addEventListener('touchstart', () => {
+    track.style.animationPlayState = 'paused';
+    if (touchPauseTimer) clearTimeout(touchPauseTimer);
+  }, { passive: true });
+
+  track.addEventListener('touchend', () => {
+    touchPauseTimer = setTimeout(() => {
+      track.style.animationPlayState = 'running';
+    }, 2200);
+  }, { passive: true });
+
   // 2. Attach click & keyboard listeners to open video modal for all cards
   const allCards = track.querySelectorAll('.case-card');
   allCards.forEach(card => {
