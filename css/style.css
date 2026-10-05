@@ -254,10 +254,10 @@ h2.section-title,
 }
 
 .cta-title {
-  font-size: clamp(6.0rem, 13.5vw, 11.5rem);
-  line-height: 0.92;
+  font-size: clamp(6.6rem, 14.2vw, 12.2rem);
+  line-height: 0.90;
   letter-spacing: -0.04em;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
@@ -1104,7 +1104,7 @@ h3, h4, p, a, button, input {
 
 /* Iridescent Mountain Ridge Placed Directly Underneath Contact Buttons */
 .cta-mountains-footing {
-  margin-top: 40px;
+  margin-top: 14px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -1114,7 +1114,7 @@ h3, h4, p, a, button, input {
 
 .cta-mountains-footing .cta-mountains-img {
   width: 100%;
-  max-width: 920px;
+  max-width: 980px;
   height: auto;
   object-fit: contain;
   opacity: 0.95;
@@ -1131,15 +1131,15 @@ h3, h4, p, a, button, input {
 }
 
 .cta-open-wrapper .cta-title {
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 .cta-subtitle {
-  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
   color: #1e293b;
   max-width: 680px;
-  margin: 0 auto 46px;
-  line-height: 1.65;
+  margin: 0 auto 18px;
+  line-height: 1.55;
   font-weight: 500;
 }
 
@@ -1148,7 +1148,7 @@ h3, h4, p, a, button, input {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 6px;
   margin: 0 auto;
 }
 
@@ -1157,7 +1157,7 @@ h3, h4, p, a, button, input {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 14px;
+  padding: 4px 10px;
   border-radius: 0 !important;
   background: none !important;
   background-color: transparent !important;
@@ -1686,9 +1686,9 @@ h3, h4, p, a, button, input {
   }
 
   .cta-title {
-    font-size: clamp(1.10rem, 4.8vw, 1.45rem) !important;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
+    font-size: clamp(2.8rem, 12.5vw, 4.2rem) !important;
+    line-height: 0.94;
+    letter-spacing: -0.035em;
     margin-bottom: 12px;
     max-width: 100%;
   }
@@ -1706,28 +1706,15 @@ h3, h4, p, a, button, input {
 
   .cta-subtitle {
     font-size: 1.02rem;
-    line-height: 1.55;
+    line-height: 1.52;
     padding: 0 6px;
-    margin-bottom: 32px;
-  }
-
-  .cta-mountains-footing {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-  }
-
-  .cta-mountains-footing .cta-mountains-img {
-    max-width: 100%;
-    height: auto;
-    opacity: 0.9;
+    margin-bottom: 14px;
   }
 
   .cta-buttons {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
     width: 100%;
     max-width: 100%;
     align-items: center;
@@ -1738,19 +1725,32 @@ h3, h4, p, a, button, input {
   .contact-btn {
     width: auto;
     max-width: 100%;
-    padding: 4px 10px;
+    padding: 2px 8px;
     justify-content: center;
     text-align: center;
   }
 
   .contact-label {
-    font-size: clamp(0.90rem, 3.8vw, 1.05rem);
+    font-size: clamp(0.88rem, 3.6vw, 1.02rem);
     text-align: center;
   }
 
   .contact-label-mail {
-    font-size: clamp(0.85rem, 3.5vw, 1.0rem);
+    font-size: clamp(0.82rem, 3.4vw, 0.96rem);
     word-break: normal;
+  }
+
+  .cta-mountains-footing {
+    margin-top: 8px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .cta-mountains-footing .cta-mountains-img {
+    max-width: 100%;
+    height: auto;
+    opacity: 0.95;
   }
 
   .footer-corners-row {
