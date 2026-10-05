@@ -226,10 +226,15 @@ h2.section-title,
 }
 
 .title-primary-line,
+.title-secondary-line,
 .title-line-1,
 .title-line-2,
 .title-line-3 {
   display: block;
+}
+
+.title-primary-line {
+  white-space: nowrap;
 }
 
 .title-line-1,
@@ -249,9 +254,9 @@ h2.section-title,
 }
 
 .cta-title {
-  font-size: clamp(5.2rem, 11.5vw, 9.6rem);
+  font-size: clamp(6.0rem, 13.5vw, 11.5rem);
   line-height: 0.92;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.04em;
   margin-bottom: 24px;
   text-align: center;
 }
@@ -1501,28 +1506,53 @@ h3, h4, p, a, button, input {
 
   h2.section-title,
   .section-title {
-    font-size: clamp(0.95rem, 3.8vw, 1.25rem);
-    line-height: 1.36;
+    font-size: clamp(0.68rem, 2.75vw, 0.90rem);
+    line-height: 1.34;
     padding: 0 4px;
     max-width: 100%;
-    word-break: break-word;
+    text-align: center;
   }
 
-  .title-primary-line,
-  .title-secondary-line,
-  .title-line-1,
-  .title-line-2,
-  .title-line-3 {
+  .title-primary-line {
+    display: block;
+    white-space: nowrap !important;
+    font-size: clamp(0.64rem, 2.6vw, 0.86rem);
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+
+  .title-secondary-line {
     display: block;
     white-space: normal !important;
-    word-break: normal;
-    overflow-wrap: break-word;
+    font-size: clamp(0.58rem, 2.4vw, 0.76rem);
+    line-height: 1.36;
+    margin-top: 6px;
     max-width: 100%;
   }
 
-  .title-secondary-line,
-  .title-line-2,
+  .title-line-1 {
+    display: block;
+    white-space: nowrap !important;
+    font-size: clamp(0.62rem, 2.55vw, 0.84rem);
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+
+  .title-line-2 {
+    display: block;
+    white-space: normal !important;
+    font-size: clamp(0.60rem, 2.45vw, 0.80rem);
+    line-height: 1.34;
+    margin-top: 6px;
+    max-width: 100%;
+  }
+
   .title-line-3 {
+    display: block;
+    white-space: nowrap !important;
+    font-size: clamp(0.62rem, 2.55vw, 0.84rem);
+    letter-spacing: -0.02em;
+    line-height: 1.3;
     margin-top: 6px;
   }
 
@@ -1578,9 +1608,10 @@ h3, h4, p, a, button, input {
   }
 
   .cta-title {
-    font-size: clamp(2.0rem, 9.4vw, 2.9rem) !important;
-    line-height: 1.0;
-    margin-bottom: 18px;
+    font-size: clamp(2.6rem, 12.2vw, 4.5rem) !important;
+    line-height: 0.94;
+    letter-spacing: -0.04em;
+    margin-bottom: 20px;
     max-width: 100%;
   }
 
