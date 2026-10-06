@@ -253,12 +253,20 @@ h2.section-title,
   margin-top: 6px;
 }
 
-.cta-title {
-  font-size: clamp(2.9rem, 7.0vw, 5.6rem);
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-  margin-bottom: 22px;
-  text-align: center;
+h2.cta-title,
+.cta-title,
+.cta-open-wrapper .cta-title {
+  font-family: 'BENZINA', 'Benzin', 'BENZIN', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  text-transform: uppercase !important;
+  font-weight: 800 !important;
+  font-size: clamp(2.9rem, 7.0vw, 5.6rem) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.025em !important;
+  margin-bottom: 22px !important;
+  text-align: center !important;
+  max-width: 1180px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .hero-brand-line {
