@@ -551,35 +551,50 @@ function createCaseCardHtml(item, isClone = false) {
 }
 
 function initCasesSection() {
-  const track = document.getElementById('cases-marquee-track');
+  const track1 = document.getElementById('cases-marquee-track-1');
+  const track2 = document.getElementById('cases-marquee-track-2');
+  const singleTrack = document.getElementById('cases-marquee-track');
   const wrapper = document.getElementById('cases-display-wrapper');
-  const btnFlow = document.getElementById('view-mode-flow');
-  const btnGrid = document.getElementById('view-mode-grid');
 
   const data = window.casesData || (typeof casesData !== 'undefined' ? casesData : []);
-  if (!track || !data.length) return;
+  if (!data.length) return;
 
-  // 1. Render primary items + duplicated set for seamless infinite marquee gliding
-  const primaryCardsHtml = data.map(item => createCaseCardHtml(item, false)).join('');
-  const cloneCardsHtml = data.map(item => createCaseCardHtml(item, true)).join('');
+  if (track1 && track2) {
+    // 2-lane dual opposing stream
+    // Top lane (Track 1): items 0..3 + duplicates (scrolls LEFT)
+    const data1 = [data[0], data[1], data[2], data[3]].filter(Boolean);
+    // Bottom lane (Track 2): items 4..7 + duplicates (scrolls RIGHT)
+    const data2 = [data[4], data[5], data[6], data[7]].filter(Boolean);
 
-  track.innerHTML = primaryCardsHtml + cloneCardsHtml;
+    const primary1 = data1.map(item => createCaseCardHtml(item, false)).join('');
+    const clone1 = data1.map(item => createCaseCardHtml(item, true)).join('');
+    track1.innerHTML = primary1 + clone1;
 
-  // Touch pause/resume for mobile devices
-  let touchPauseTimer = null;
-  track.addEventListener('touchstart', () => {
-    track.style.animationPlayState = 'paused';
-    if (touchPauseTimer) clearTimeout(touchPauseTimer);
-  }, { passive: true });
+    const primary2 = data2.map(item => createCaseCardHtml(item, false)).join('');
+    const clone2 = data2.map(item => createCaseCardHtml(item, true)).join('');
+    track2.innerHTML = primary2 + clone2;
 
-  track.addEventListener('touchend', () => {
-    touchPauseTimer = setTimeout(() => {
-      track.style.animationPlayState = 'running';
-    }, 2200);
-  }, { passive: true });
+    [track1, track2].forEach(track => {
+      let touchPauseTimer = null;
+      track.addEventListener('touchstart', () => {
+        track.style.animationPlayState = 'paused';
+        if (touchPauseTimer) clearTimeout(touchPauseTimer);
+      }, { passive: true });
 
-  // 2. Attach click & keyboard listeners to open video modal for all cards
-  const allCards = track.querySelectorAll('.case-card');
+      track.addEventListener('touchend', () => {
+        touchPauseTimer = setTimeout(() => {
+          track.style.animationPlayState = 'running';
+        }, 2200);
+      }, { passive: true });
+    });
+  } else if (singleTrack) {
+    const primaryCardsHtml = data.map(item => createCaseCardHtml(item, false)).join('');
+    const cloneCardsHtml = data.map(item => createCaseCardHtml(item, true)).join('');
+    singleTrack.innerHTML = primaryCardsHtml + cloneCardsHtml;
+  }
+
+  // Attach click & keyboard listeners to open video modal for all cards across both tracks
+  const allCards = document.querySelectorAll('.case-card');
   allCards.forEach(card => {
     const id = card.getAttribute('data-id');
     const caseItem = data.find(c => c.id === id);
@@ -598,25 +613,6 @@ function initCasesSection() {
       }
     });
   });
-
-  // 3. View mode switch controls (Flow vs Grid)
-  if (btnFlow && btnGrid && wrapper) {
-    btnFlow.addEventListener('click', () => {
-      if (btnFlow.classList.contains('active')) return;
-      btnFlow.classList.add('active');
-      btnGrid.classList.remove('active');
-      wrapper.classList.remove('mode-grid');
-      wrapper.classList.add('mode-flow');
-    });
-
-    btnGrid.addEventListener('click', () => {
-      if (btnGrid.classList.contains('active')) return;
-      btnGrid.classList.add('active');
-      btnFlow.classList.remove('active');
-      wrapper.classList.remove('mode-flow');
-      wrapper.classList.add('mode-grid');
-    });
-  }
 }
 
 /* ==========================================================================

@@ -24,7 +24,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
-  <link rel="stylesheet" href="css/style.css?v=20261006_v36">
+  <link rel="stylesheet" href="css/style.css?v=20261006_v37">
 </head>
 <body>
 
@@ -86,10 +86,19 @@
             <span class="hero-btn-text">Обсудить бриф</span>
           </a>
         </div>
+
+        <!-- Scroll down indicator -->
+        <a href="#cases" class="hero-scroll-indicator" aria-label="Листать к кейсам">
+          <span class="scroll-arrow-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 10l5 5 5-5"/>
+            </svg>
+          </span>
+        </a>
       </div>
     </section>
 
-    <!-- Cases Section (Floating Video Exhibition with Neon Borders) -->
+    <!-- Cases Section (Floating Video Exhibition with Dual-Stream Opposing Lanes) -->
     <section class="cases-section" id="cases">
       <div class="cases-bg-pattern" aria-hidden="true"></div>
       <div class="container">
@@ -104,10 +113,17 @@
         </div>
       </div>
 
-      <!-- Cases Container (Edge-to-edge out of side bounds) -->
+      <!-- Cases Container (Dual-Stream Opposing Marquee Lanes) -->
       <div class="cases-display-wrapper mode-flow" id="cases-display-wrapper">
-        <div class="cases-marquee-track" id="cases-marquee-track">
-          <!-- Dynamic case cards injected by main.js with continuous neon border beam & floating drift -->
+        <div class="cases-marquee-lane cases-lane-top">
+          <div class="cases-marquee-track" id="cases-marquee-track-1">
+            <!-- Injected dynamically by main.js (Track 1 -> Left stream) -->
+          </div>
+        </div>
+        <div class="cases-marquee-lane cases-lane-bottom">
+          <div class="cases-marquee-track" id="cases-marquee-track-2">
+            <!-- Injected dynamically by main.js (Track 2 -> Right stream) -->
+          </div>
         </div>
       </div>
     </section>
@@ -272,7 +288,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/cases.js?v=20261006_v36"></script>
-  <script src="js/main.js?v=20261006_v36"></script>
+  <script src="js/cases.js?v=20261006_v37"></script>
+  <script src="js/main.js?v=20261006_v37"></script>
 </body>
 </html>
